@@ -114,9 +114,13 @@ function loadData(){
     markersArray.push(gpsMarker);
     // add all location markers to map and list view and array
     for(var i=0; i< pin.length; i++){
+        if(pin[i].distance>15){}
+        else {
+            addMarker(i);
+            relativePosition(i);
+            }
         $(".listItems").append("<div class='item'>"+pin[i].name+"</div>");
-        addMarker(i);
-        relativePosition(i);
+       
     }
     map.fitBounds(bounds);
     google.maps.event.trigger(map, "resize");
@@ -172,12 +176,12 @@ function calculateDirection(degree){
             } 
             else if(pin[i].distance>2){
                 away = Math.round(pin[i].distance);
-                fontSize = "18";
+                fontSize = "12";
                 fontColor = "#6e6e6e";
                 
             } else {
                 away = pin[i].distance.toFixed(2);
-                fontSize = "30";
+                fontSize = "18";
                 fontColor = "#eee";  
             }
             
