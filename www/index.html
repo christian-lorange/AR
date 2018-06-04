@@ -179,7 +179,7 @@ function calculateDirection(degree){
                 away = pin[i].distance.toFixed(2);
                 fontSize = "30";
                 fontColor = "#eee";
-                display:block;
+                
             }
             $("#spot").append('<div class="name" data-id="'+i+'" style="margin-left:'+(((pin[i].bearing - degree) * 5)+50)+'px;width:'+($(window).width()-100)+'px;font-size:'+fontSize+'px;color:'+fontColor+'">'+pin[i].name+'<div class="distance">'+ away +' miles away</div></div>');
             detected = 1;
