@@ -165,20 +165,16 @@ function calculateDirection(degree){
                 away = Math.round(pin[i].distance);
                 fontSize = "14";
                 fontColor = "#ddd";
-                display:block;
+       
             } else if(pin[i].distance>5){
                 away = Math.round(pin[i].distance);
                 fontSize = "18";
                 fontColor = "#ddd";
-                display:block;
+            
             } else if(pin[i].distance>2){
                 away = Math.round(pin[i].distance);
                 fontSize = "24";
                 fontColor = "#ddd";
-                display:block;
-            } else if(pin[i].distance<2){
-                away = Math.round(pin[i].distance);
-                display:block;
             } else {
                 away = pin[i].distance.toFixed(2);
                 fontSize = "30";
