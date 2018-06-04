@@ -164,18 +164,25 @@ function calculateDirection(degree){
                 away = Math.round(pin[i].distance);
                 fontSize = "14";
                 fontColor = "#ddd";
+                display:block;
             } else if(pin[i].distance>5){
                 away = Math.round(pin[i].distance);
                 fontSize = "18";
                 fontColor = "#ddd";
+                display:block;
             } else if(pin[i].distance>2){
                 away = Math.round(pin[i].distance);
                 fontSize = "24";
                 fontColor = "#ddd";
-            }else {
+                display:block;
+            } else if(pin[i].distance<2){
+                away = Math.round(pin[i].distance);
+                display:block;
+            } else {
                 away = pin[i].distance.toFixed(2);
                 fontSize = "30";
                 fontColor = "#eee";
+                display:block;
             }
             $("#spot").append('<div class="name" data-id="'+i+'" style="margin-left:'+(((pin[i].bearing - degree) * 5)+50)+'px;width:'+($(window).width()-100)+'px;font-size:'+fontSize+'px;color:'+fontColor+'">'+pin[i].name+'<div class="distance">'+ away +' miles away</div></div>');
             detected = 1;
