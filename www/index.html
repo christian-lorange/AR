@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
   <head>
-    <title>Nearby</title>
+    <title>Passport Specials</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="Copyright" content="&copy; 2013, Intel Corporation. All rights reserved." />
-    <meta name="Author" content="Rakshith Krishnappa" />
+    <meta name="Copyright" content="&copy; 2018, OrangeHouse LLC. All rights reserved." />
+    <meta name="Author" content="Christian L'Orange" />
 <!--
  * Copyright (c) 2013, Intel Corporation. All rights reserved.
  * Please see http://software.intel.com/html5/license/samples 
@@ -17,6 +17,7 @@
     <script src="lib/jquery/jquery-1.8.2.min.js"></script>
     <script src="cordova.js"></script>
     <script>
+
 var pin = [
     {"name":"New York", "lat":"40.714353", "lng":"-74.005973"},
     {"name":"San Francisco", "lat":"37.77493", "lng":"-122.419416"},
@@ -30,6 +31,8 @@ var pin = [
     {"name":"Phoenix", "lat":"33.448377", "lng":"-112.074037"},
     {"name":"Atlanta", "lat":"33.748995", "lng":"-84.387982"},
     {"name":"Kansas City", "lat":"39.099727", "lng":"-94.578567"}
+    {"name":"Fort Collins", "lat":"40.5932", "lng":"105.0686"}
+    {"name":"Home", "lat":"40.5497", "lng":"105.0793"}
 ];        
 var markersArray = [], bounds;
 var myLat = 0, myLng = 0; 
@@ -106,7 +109,7 @@ function loadData(){
     markersArray.push(gpsMarker);
     // add all location markers to map and list view and array
     for(var i=0; i< pin.length; i++){
-        $(".listItems").append("<div class='item'>"+pin[i].name+"</div>");
+        $(".listItems").append("<div class='item'>"+pin[i].name+pin[i].lng"</div>");
         addMarker(i);
         relativePosition(i);
     }
@@ -153,16 +156,21 @@ function calculateDirection(degree){
         if(Math.abs(pin[i].bearing - degree) <= 20){
             var away, fontSize, fontColor;
             // varry font size based on distance from gps location
-            if(pin[i].distance>1500){
+            if(pin[i].distance>20){
                 away = Math.round(pin[i].distance);
-                fontSize = "16";
+                display = "none";
+                fontSize = "0";
                 fontColor = "#ccc";
-            } else if(pin[i].distance>500){
+            } else if(pin[i].distance>15){
+                away = Math.round(pin[i].distance);
+                fontSize = "24";
+                fontColor = "#ddd";
+            } else if(pin[i].distance>3){
                 away = Math.round(pin[i].distance);
                 fontSize = "24";
                 fontColor = "#ddd";
             } else {
-                away = pin[i].distance.toFixed(2);
+                away = pin[i].distance.toFixed(0.5);
                 fontSize = "30";
                 fontColor = "#eee";
             }
@@ -330,15 +338,13 @@ body {background-color:transparent;font-family:Arial;margin:0;overflow-x:hidden;
     <div id="arView" style="background-color: transparent">
         <div class="arMessage">&uarr;<br>Tilt down to see all places</div>
         <br>
-        <div class="arMessage">&larr; Move the device around to find spots &rarr;</div>
+        <div class="arMessage">&larr; Move the device around to find Passport locations near you. &rarr;</div>
         <br>
         <div id="direction"></div>
         <br>
         <div id="spot"></div>
-        <div class="snap" onclick="doSnapshot()">
-    		<img id="snapbtn" src="img/camera_btn.png">
-    	</div>
-         <div class="attributing">
+        
+        <div class="attributing">
             ezAR Technologies
         </div>
     </div>
