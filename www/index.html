@@ -118,7 +118,7 @@ function loadData(){
         
         if(pin[i].distance>15){}
         else {
-        $(".listItems").append("<div class='item'>onclick='openModal();currentSlide(i)'"+pin[i].name+"</div>");
+        $(".listItems").append("<div class='item' onclick=openModal();currentSlide("+i+")'>"+pin[i].name+"</div>");
             }
       
     }
