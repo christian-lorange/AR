@@ -24,14 +24,18 @@ var pin = [
     {"name":"Seattle", "lat":"47.60621", "lng":"-122.332071"},
     {"name":"Los Angeles", "lat":"34.052234", "lng":"-118.243685"},
     {"name":"Denver", "lat":"39.737567", "lng":"-104.984718"},
-    {"name":"Chicago", "lat":"41.878114", "lng":"-87.629798"},
-    {"name":"Austin", "lat":"30.267153", "lng":"-97.743061"},
-    {"name":"Miami", "lat":"25.788969", "lng":"-80.226439"},
-    {"name":"Pittsburg", "lat":"40.440625", "lng":"-79.995886"},
-    {"name":"Phoenix", "lat":"33.448377", "lng":"-112.074037"},
-    {"name":"Atlanta", "lat":"33.748995", "lng":"-84.387982"},
-    {"name":"Kansas City", "lat":"39.099727", "lng":"-94.578567"},
-    {"name":"New Belg", "lat":"40.593200", "lng":"-105.068600"}
+    {"name":"The Crown Pub","lat":"40.586255","lng":"-105.076543"},
+    {"name":"Social","lat":"40.5872801","lng":"-105.0783097"},
+    {"name":"Elliot's Martini Bar","lat":"40.5884398","lng":"-105.0766902"},
+    {"name":"Coopersmith's Pub & Brewing","lat":"40.587348","lng":"-105.07566"},
+    {"name":"The Mayor of Old Town","lat":"40.578889","lng":"-105.078713"},
+    {"name":"Trailhead Tavern","lat":"40.587235","lng":"-105.078429"},
+    {"name":"Bar Louie","lat":"40.542339","lng":"-105.072624"},
+    {"name":"CB & Potts","lat":"40.543631","lng":"-105.073941"},
+    {"name":"The Forge Public House","lat":"40.58881","lng":"-105.07551"},
+    {"name":"Tap & Handle","lat":"40.583739","lng":"-105.077551"},
+    {"name":"Blind Pig","lat":"40.588191","lng":"-105.074905"},
+    {"name":"Avogadro's Number","lat":"40.579534","lng":"-105.079213"}
 ];  
 
 
@@ -157,30 +161,26 @@ function calculateDirection(degree){
         if(Math.abs(pin[i].bearing - degree) <= 20){
             var away, fontSize, fontColor;
             // varry font size based on distance from gps location
-            if(pin[i].distance>1000){
+             if(pin[i].distance>15){
                 away = Math.round(pin[i].distance);
                 display:none;
-
-            } else if(pin[i].distance>10){
+            }else if(pin[i].distance>5){
                 away = Math.round(pin[i].distance);
-                fontSize = "14";
-                fontColor = "#ddd";
-       
-            } else if(pin[i].distance>5){
+                fontSize = "8";
+                fontColor = "#000";
+               
+            } 
+            else if(pin[i].distance>2){
                 away = Math.round(pin[i].distance);
                 fontSize = "18";
-                fontColor = "#ddd";
-            
-            } else if(pin[i].distance>2){
-                away = Math.round(pin[i].distance);
-                fontSize = "24";
-                fontColor = "#ddd";
+                fontColor = "#6e6e6e";
+                
             } else {
                 away = pin[i].distance.toFixed(2);
                 fontSize = "30";
-                fontColor = "#eee";
-                
+                fontColor = "#eee";  
             }
+            
             $("#spot").append('<div class="name" data-id="'+i+'" style="margin-left:'+(((pin[i].bearing - degree) * 5)+50)+'px;width:'+($(window).width()-100)+'px;font-size:'+fontSize+'px;color:'+fontColor+'">'+pin[i].name+'<div class="distance">'+ away +' miles away</div></div>');
             detected = 1;
         } else {
