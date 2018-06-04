@@ -31,7 +31,8 @@ var pin = [
     {"name":"Phoenix", "lat":"33.448377", "lng":"-112.074037"},
     {"name":"Atlanta", "lat":"33.748995", "lng":"-84.387982"},
     {"name":"Kansas City", "lat":"39.099727", "lng":"-94.578567"},
-    {"name":"New Belg", "lat":"40.593200", "lng":"-105.068600"}
+    {"name":"New Belg", "lat":"40.593200", "lng":"-105.068600"},
+    {"name":"New Belg2", "lat":"40.593200", "lng":"-105.068600"}
 ];        
 var markersArray = [], bounds;
 var myLat = 0, myLng = 0; 
@@ -158,8 +159,7 @@ function calculateDirection(degree){
             if(pin[i].distance>20){
                 away = Math.round(pin[i].distance);
                 display:none;
-                fontSize = "10";
-                fontColor = "#ccc";
+
             } else if(pin[i].distance>10){
                 away = Math.round(pin[i].distance);
                 fontSize = "14";
