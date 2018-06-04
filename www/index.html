@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="lib/jquery/jquery-1.8.2.min.js"></script>
     <script src="cordova.js"></script>
     <script>
@@ -35,22 +35,35 @@ var markersArray = [], bounds;
 var myLat = 0, myLng = 0; 
 var bearing, distance;
 var dataStatus = 0;                
-
 // setup map and listen to deviceready        
 $( document ).ready(function() {
     document.addEventListener("deviceready", onDeviceReady, false);
 });
-
 // start device compass, accelerometer and geolocation after deviceready        
 function onDeviceReady() {
-    navigator.splashscreen.hide();
+
+    //navigator.splashscreen.hide();
+    startCamera();
+
     setupMap();
+
     // start cordova device sensors
     startAccelerometer();
     startCompass();
     startGeolocation();
 }
-        
+
+function startCamera() {
+    ezar.initializeVideoOverlay(
+        function() {
+            ezar.getBackCamera().start();
+        },
+        function(error) {
+            alert("ezar initialization failed");
+        });
+}  
+
+
 // setup google maps api        
 function setupMap(){
     $("#map").height($(window).height()-60);
@@ -65,13 +78,15 @@ function setupMap(){
     };
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }        
-
 // toggle between list view and map view        
 function toggleView(){
     if($(".listView").is(":visible")){
         $(".listView").hide();
         $("#map").height($(window).height()-60);
-        $(".mapView").fadeIn(function(){google.maps.event.trigger(map, "resize");map.fitBounds(bounds);});
+        $(".mapView").fadeIn(
+            function(){
+                google.maps.event.trigger(map, "resize");
+                map.fitBounds(bounds);});
         $("#viewbtn").html("List");
     } else {
         $(".mapView").hide();
@@ -79,7 +94,6 @@ function toggleView(){
         $("#viewbtn").html("Map");
     }
 }
-
 // get data from API and store in array, add to list view and create markers on map, calculate         
 function loadData(){
     dataStatus = "loading";
@@ -100,21 +114,18 @@ function loadData(){
     google.maps.event.trigger(map, "resize");
     dataStatus = "loaded";   
 }
-
 // add marker to map and in array        
 function addMarker(i){
 	var marker = new google.maps.Marker({position: new google.maps.LatLng(pin[i].lat, pin[i].lng), map: map, title: pin[i].name});
 	bounds.extend(new google.maps.LatLng(pin[i].lat, pin[i].lng));
 	markersArray.push(marker);
 } 
-
 // clear all markers from map and array        
 function clearMarkers() {
 	while (markersArray.length) {
 		markersArray.pop().setMap(null);
 	}
 }        
-
 // calulate distance and bearing value for each of the points wrt gps lat/lng        
 function relativePosition(i){
     var pinLat = pin[i].lat;
@@ -134,7 +145,6 @@ function relativePosition(i){
     distance = 3958.76  * c;
     pin[i]['distance'] = distance;
 }
-
 // calculate direction of points and display        
 function calculateDirection(degree){
     var detected = 0;
@@ -190,7 +200,6 @@ function onGeoSuccess(position) {
         loadData();
     }
 }
-
 // onError: Failed to get the location
 function onGeoError() {
     document.getElementById('log').innerHTML += "onError=.";
@@ -201,7 +210,6 @@ function startCompass() {
     var options = { frequency: 100 };
     watchCompassID = navigator.compass.watchHeading(onCompassSuccess, onCompassError, options);
 }
-
 // Stop watching the compass
 function stopCompass() {
     if (watchCompassID) {
@@ -209,7 +217,6 @@ function stopCompass() {
         watchCompassID = null;
     }
 }
-
 // onSuccess: Get the current heading
 function onCompassSuccess(heading) {
     var directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N'];
@@ -221,7 +228,6 @@ function onCompassSuccess(heading) {
         calculateDirection(degree);
     }
 }
-
 // onError: Failed to get the heading
 function onCompassError(compassError) {
     document.getElementById('log').innerHTML += "onError=."+compassError.code;
@@ -232,7 +238,6 @@ function startAccelerometer() {
     var options = { frequency: 100 };
     watchAccelerometerID = navigator.accelerometer.watchAcceleration(onAccelerometerSuccess, onAccelerometerError, options);
 }
-
 // Stop checking the accelerometer
 function stopAccelerometer() {
     if (watchAccelerometerID) {
@@ -240,7 +245,6 @@ function stopAccelerometer() {
         watchAccelerometerID = null;
     }
 }
-
 // onSuccess: Get current accelerometer values
 function onAccelerometerSuccess(acceleration) {
     // for debug purpose to print out accelerometer values
@@ -251,21 +255,40 @@ function onAccelerometerSuccess(acceleration) {
     if(acceleration.y > 7){
         $("#arView").fadeIn();
         $("#topView").hide();
-        document.getElementById('body').style.background = "#d22";
+        // document.getElementById('body').style.background = "#d22";
+        document.getElementById('body').style.background = "transparent";
     } else {
         $("#arView").hide();
         $("#topView").fadeIn();
         document.getElementById('body').style.background = "#fff";
     }
 }
-
 // onError: Failed to get the acceleration
 function onAccelerometerError() {
     document.getElementById('log').innerHTML += "onError.";
 }
+
+ function doSnapshot() {
+        //hide snapbtn so it will not be in snapshot image
+        document.getElementById("snapbtn").style.display = "none";
+        
+        //give dom chance to hide snapbtn before image capture
+        setTimeout( function() { 
+            ezar.snapshot(  
+                function(data) {
+                    alert("Snapshot complete.\nSee Gallery for image");
+                    document.getElementById("snapbtn").style.display = "block";
+                }, 
+                function(err) {
+                    alert("Error: " + err);
+                    document.getElementById("snapbtn").style.display = "block";
+                },
+                {"saveToPhotoAlbum":true}
+            )}, 10);
+    } 
     </script>
     <style>
-body {background-color:#fff;font-family:Arial;margin:0;overflow-x:hidden;-webkit-user-select: none;}
+body {background-color:transparent;font-family:Arial;margin:0;overflow-x:hidden;-webkit-user-select: none;}
 .navbar {background-color:#222;height:40px;padding:10px;text-align:center;color:#fff;font-size:20px;font-weight:bold;line-height:40px;}
 .navtitle {text-align:center;margin:auto}
 .navbtn {background-color:#333;padding:5px 10px;height:30px;color:#fff;font-size:18px;font-weight:bold;line-height:30px;border-radius:4px;border:1px solid #666} 
@@ -282,16 +305,29 @@ body {background-color:#fff;font-family:Arial;margin:0;overflow-x:hidden;-webkit
 .arMessage {color:#ddd;font-size:14px}
 #spot {text-align:center}
 .name, .distance {text-shadow:0 1px #666}
-.name {padding:15px;font-weight:bold;;background-color:#c22;border-radius:40px;margin-bottom:10px}
-#direction {color:#d55;font-size:20px;padding:15px;font-weight:bold;;background-color:#a22;border-radius:40px;display:inline-block;margin-bottom:10px;width:40px;line-height:40px}
+.name {padding:15px;font-weight:bold;background-color:rgba(204,34,34,0.5);border-radius:40px;margin-bottom:10px}
+#direction {color:#fff;font-size:20px;padding:15px;font-weight:bold;;background-color:#a22;border-radius:40px;display:inline-block;margin-bottom:10px;width:40px;line-height:40px}
 .distance {font-size:14px;font-weight:normal;}
 #debug {border:1px solid #999;display:none}
 .heading {background-color:#999;color:#eee;padding:5px;}
 #compass, #accelerometer, #geolocation {padding:5px}
+
+.snap {
+    position: absolute;
+    right: 31px;
+    bottom: 26px;
+}
+
+.attributing {
+    color: rgb(255, 213, 0);
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
     </style>
   </head>
-  <body id="body">  
-    <div id="arView">
+  <body id="body" style="background-color: transparent">  
+    <div id="arView" style="background-color: transparent">
         <div class="arMessage">&uarr;<br>Tilt down to see all places</div>
         <br>
         <div class="arMessage">&larr; Move the device around to find spots &rarr;</div>
@@ -299,10 +335,16 @@ body {background-color:#fff;font-family:Arial;margin:0;overflow-x:hidden;-webkit
         <div id="direction"></div>
         <br>
         <div id="spot"></div>
+        <div class="snap" onclick="doSnapshot()">
+    		<img id="snapbtn" src="img/camera_btn.png">
+    	</div>
+         <div class="attributing">
+            ezAR Technologies
+        </div>
     </div>
-    <div id="topView">
+    <div id="topView" style="background-color: white">
         <div class="navbar">
-            <div id="actionbtn" class="navbtn"> &crarr; </div>
+            <!--<div id="actionbtn" class="navbtn"> &crarr; </div>-->
             <div id="viewbtn" class="navbtn" onclick="toggleView()">Map</div>    
             <div class="navtitle">Nearby</div> 
         </div>
