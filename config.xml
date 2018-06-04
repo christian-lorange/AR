@@ -1,16 +1,27 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ezartech.demo.ezarpoi" 
-    version="0.1.0" 
-    xmlns="http://www.w3.org/ns/widgets" 
-    xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ezar-poi</name>
-    <description>
-        Display points of interest overlaying a camera video preview.
-    </description>
-    <author email="info@ezartech.com" href="http://ezartech.com">
-        Wayne Parrott
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.orangehousepassport.app"
+        version   = "1.0.0">
+
+    <name>Passport AR</name>
+
+    <description>Augmented Reality Passport</description>
+
+    <author href="http://orangehousellc.com" email="lorange.christian@gmail.com">
+        OrangeHouseLLC
     </author>
+
+    
     <content src="index.html" />
+
+    <engine name="android" spec="6.4.0" />
+    <engine name="ios" spec="~4.5.3" />
+
+    <preference name="permissions"                value="none"/>
+
+
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
