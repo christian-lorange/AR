@@ -158,7 +158,7 @@ function calculateDirection(degree){
     var detected = 0;
     $("#spot").html("");
     for(var i=0;i<pin.length;i++){
-        if(Math.abs(pin[i].bearing - degree) <= 60){
+        if(Math.abs(pin[i].bearing - degree) <= 10){
             var away, fontSize, fontColor;
             // varry font size based on distance from gps location
              if(pin[i].distance>15){
