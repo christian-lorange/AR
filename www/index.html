@@ -31,7 +31,7 @@ var pin = [
     {"name":"Phoenix", "lat":"33.448377", "lng":"-112.074037"},
     {"name":"Atlanta", "lat":"33.748995", "lng":"-84.387982"},
     {"name":"Kansas City", "lat":"39.099727", "lng":"-94.578567"},
-    {"name":"New Belg", "lat":"40.5932", "lng":"-105.0686"}
+    {"name":"New Belg", "lat":"40.593200", "lng":"-105.068600"}
 ];        
 var markersArray = [], bounds;
 var myLat = 0, myLng = 0; 
@@ -155,16 +155,24 @@ function calculateDirection(degree){
         if(Math.abs(pin[i].bearing - degree) <= 20){
             var away, fontSize, fontColor;
             // varry font size based on distance from gps location
-            if(pin[i].distance>500){
+            if(pin[i].distance>20){
                 away = Math.round(pin[i].distance);
                 display:none;
-                fontSize = "1";
+                fontSize = "10";
                 fontColor = "#ccc";
-            } else if(pin[i].distance>200){
+            } else if(pin[i].distance>10){
+                away = Math.round(pin[i].distance);
+                fontSize = "14";
+                fontColor = "#ddd";
+            } else if(pin[i].distance>5){
+                away = Math.round(pin[i].distance);
+                fontSize = "18";
+                fontColor = "#ddd";
+            } else if(pin[i].distance>2){
                 away = Math.round(pin[i].distance);
                 fontSize = "24";
                 fontColor = "#ddd";
-            } else {
+            }else {
                 away = pin[i].distance.toFixed(2);
                 fontSize = "30";
                 fontColor = "#eee";
