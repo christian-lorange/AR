@@ -114,13 +114,14 @@ function loadData(){
     markersArray.push(gpsMarker);
     // add all location markers to map and list view and array
     for(var i=0; i< pin.length; i++){
+        addMarker(i);
+        relativePosition(i);
+        
         if(pin[i].distance>15){}
         else {
-            addMarker(i);
-            relativePosition(i);
-            }
         $(".listItems").append("<div class='item'>"+pin[i].name+"</div>");
-       
+            }
+      
     }
     map.fitBounds(bounds);
     google.maps.event.trigger(map, "resize");
