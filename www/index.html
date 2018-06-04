@@ -172,21 +172,21 @@ function calculateDirection(degree){
             }else if(pin[i].distance>5){
                 away = Math.round(pin[i].distance);
                 fontSize = "8";
-                fontColor = "#000";
+                fontColor = "#292d11";
                
             } 
             else if(pin[i].distance>2){
                 away = Math.round(pin[i].distance);
                 fontSize = "12";
-                fontColor = "#6e6e6e";
+                fontColor = "#292d11";
                 
             } else {
                 away = pin[i].distance.toFixed(2);
                 fontSize = "18";
-                fontColor = "#eee";  
+                fontColor = "#292d11";  
             }
             
-            $("#spot").append('<div class="name" data-id="'+i+'" style="margin-left:'+(((pin[i].bearing - degree) * 5)+50)+'px;width:'+($(window).width()-100)+'px;font-size:'+fontSize+'px;color:'+fontColor+'">'+pin[i].name+'<div class="distance">'+ away +' miles away</div></div>');
+            $("#spot").append('<div class="name" data-id="'+i+'" style="margin-left:'+(((pin[i].bearing - degree) * 5)+50)+'px;width:'+($(window).width()-100)+'px;font-size:'+fontSize+'px;color:'+fontColor+'">'+<a href="www.google.com">+''+pin[i].name+''+</a>+'<div class="distance">'+ away +' miles away</div></div>');
             detected = 1;
         } else {
             if(!detected){
@@ -308,7 +308,7 @@ function onAccelerometerError() {
     } 
     </script>
     <style>
-body {background-color:transparent;font-family:Arial;margin:0;overflow-x:hidden;-webkit-user-select: none;}
+body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden;-webkit-user-select: none;}
 .navbar {background-color:#222;height:40px;padding:10px;text-align:center;color:#fff;font-size:20px;font-weight:bold;line-height:40px;}
 .navtitle {text-align:center;margin:auto}
 .navbtn {background-color:#333;padding:5px 10px;height:30px;color:#fff;font-size:18px;font-weight:bold;line-height:30px;border-radius:4px;border:1px solid #666} 
@@ -325,8 +325,8 @@ body {background-color:transparent;font-family:Arial;margin:0;overflow-x:hidden;
 .arMessage {color:#ddd;font-size:14px}
 #spot {text-align:center}
 .name, .distance {text-shadow:0 1px #666}
-.name {padding:15px;font-weight:bold;background-color:rgba(204,34,34,0.5);border-radius:40px;margin-bottom:10px}
-#direction {color:#fff;font-size:20px;padding:15px;font-weight:bold;;background-color:#a22;border-radius:40px;display:inline-block;margin-bottom:10px;width:40px;line-height:40px}
+.name {padding:15px;font-weight:bold;background-color:rgba(219,233,233,0.5);border-radius:10px;margin-bottom:10px}
+#direction {color:#fff;font-size:20px;padding:15px;font-weight:bold;;background-color:#dbe9e9;border-radius:10px;display:inline-block;margin-bottom:10px;width:40px;line-height:40px}
 .distance {font-size:14px;font-weight:normal;}
 #debug {border:1px solid #999;display:none}
 .heading {background-color:#999;color:#eee;padding:5px;}
