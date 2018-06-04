@@ -158,7 +158,8 @@ function calculateDirection(degree){
             // varry font size based on distance from gps location
             if(pin[i].distance>20){
                 away = Math.round(pin[i].distance);
-                display:none;
+                fontSize = "14";
+                fontColor = "#ddd";
 
             } else if(pin[i].distance>10){
                 away = Math.round(pin[i].distance);
