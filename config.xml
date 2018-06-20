@@ -16,8 +16,8 @@
     
     <content src="index.html" />
 
-    <engine name="android" spec="6.4.0" />
-    <engine name="ios" spec="~4.5.3" />
+    <engine name="android" />
+    <engine name="ios"  />
 
     <preference name="permissions"                value="none"/>
 
@@ -40,9 +40,9 @@
 
 
     <gap:plugin name="com.ezartech.ezar.videooverlay" source="npm"/>
-    <plugin name="cordova-plugin-device-orientation" spec="~1.0.4" />
-    <plugin name="cordova-plugin-device-motion" spec="~1.2.2" />
-    <plugin name="cordova-plugin-geolocation" spec="~2.3.0" />
+    <plugin name="cordova-plugin-device-orientation"/>
+    <plugin name="cordova-plugin-device-motion" />
+    <plugin name="cordova-plugin-geolocation"  />
     <gap:plugin name="cordova-plugin-ezar-snapshot" source="npm"/>
 
 </widget>
