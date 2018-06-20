@@ -118,11 +118,9 @@ function loadData(){
     for(var i=0; i< pin.length; i++){
         addMarker(i);
         relativePosition(i);
-        
-        if(pin[i].distance>15){}
-        else {
+
         $(".listItems").append("<div class='item'>"+pin[i].name+"</div>");
-            }
+
       
     }
     map.fitBounds(bounds);
@@ -170,7 +168,7 @@ function calculateDirection(degree){
             // varry font size based on distance from gps location
              if(pin[i].distance>15){
                 away = Math.round(pin[i].distance);
-                display:none;
+
             }else if(pin[i].distance>5){
                 away = Math.round(pin[i].distance);
                 fontSize = "8";
