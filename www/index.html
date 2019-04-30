@@ -206,7 +206,7 @@ function calculateDirection(degree){
     var detected = 0;
     $("#spot").html("");
     for(var i=0;i<pin.length;i++){
-        if(Math.abs(pin[i].bearing - degree) <= 10){
+        if(Math.abs(pin[i].bearing - degree) <= 30){
             var away, fontSize, fontColor,dx;
             // varry font size based on distance from gps location
              if(code[i].distance==3){
@@ -361,7 +361,7 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
 #arView{padding:30px 0; height:70px;text-align:center}
 .arMessage {color:#ddd;font-size:14px}
 #spot {text-align:center}
-.name, .distance {text-shadow:0 1px #666}
+
 .name {padding-left:5px;padding-right:5px;font-weight:bold;background-color:rgba(219,233,233,0.9);border-radius:10px;margin-bottom:10px}
 #direction {color:#fff;font-size:20px;padding:15px;font-weight:bold;;background-color:#dbe9e9;border-radius:10px;display:inline-block;margin-bottom:10px;width:40px;line-height:40px}
 .distance {font-size:14px;font-weight:normal;}
