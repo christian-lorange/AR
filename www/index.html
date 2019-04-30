@@ -410,14 +410,14 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
 
             <div class="navtitle">Happy Hour Live View</div> 
 
-            <select id="distance">
+            <select id="distance_control">
   <option value="0.25">0.25 mile</option>
   <option value="0.5" selected="selected">0.5 mile</option>
   <option value="1">1 mile</option>
 </select>
 
 <script type="text/javascript">
-var e = document.getElementById("locations");
+var e = document.getElementById("distance_control");
 e.addEventListener('change', function (){
     var distance_threshold = this.options[this.selectedIndex].value;
     calculateDirection(degree);
