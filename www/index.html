@@ -41,8 +41,6 @@
 
 
 
-var hh = {0:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},1:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:16,2:18},5: {1:16,2:18},6: {1:16,2:18}},2:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},3:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},4:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},5:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},6:{0: {1:16,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:16,2:18}},7:{0: {1:16,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:16,2:18}},8:{0: {1:9,2:24},1: {1:11,2:24},2: {1:11,2:24},3: {1:11,2:24},4: {1:11,2:24},5: {1:11,2:24},6: {1:9,2:24}},9:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},10:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},11:{0: {1:0,2:0},1: {1:0,2:0},2: {1:0,2:0},3: {1:0,2:0},4: {1:0,2:0},5: {1:0,2:0},6: {1:0,2:0}},12:{0: {1:15,2:18},1: {1:15,2:18},2: {1:15,2:18},3: {1:15,2:18},4: {1:15,2:18},5: {1:15,2:18},6: {1:15,2:18}}};
-
    var d = new Date();
    var n = d.getDay();
 
@@ -365,7 +363,7 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
 .arMessage {color:#ddd;font-size:14px}
 #spot {text-align:center}
 .name, .distance {text-shadow:0 1px #666}
-.name {padding:15px;font-weight:bold;background-color:rgba(219,233,233,0.5);border-radius:10px;margin-bottom:10px}
+.name {padding-left:5px;padding-right:5px;font-weight:bold;background-color:rgba(219,233,233,0.5);border-radius:10px;margin-bottom:10px}
 #direction {color:#fff;font-size:20px;padding:15px;font-weight:bold;;background-color:#dbe9e9;border-radius:10px;display:inline-block;margin-bottom:10px;width:40px;line-height:40px}
 .distance {font-size:14px;font-weight:normal;}
 #debug {border:1px solid #999;display:none}
@@ -384,9 +382,9 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
 
 .attributing {
     color: rgb(255, 213, 0);
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
 }
     </style>
   </head>
