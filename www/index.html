@@ -64,7 +64,7 @@ var hh = {0:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:1
 
 
 
-       code=[];             //Place holder for tracking happy hours
+   var code=[];             //Place holder for tracking happy hours
 
    var elements = document.getElementsByClassName(weekday[d.getDay()]);
     for(i=0; i<pin.length; i++) {
@@ -221,26 +221,27 @@ function calculateDirection(degree){
         if(Math.abs(pin[i].bearing - degree) <= 10){
             var away, fontSize, fontColor;
             // varry font size based on distance from gps location
-             if(code[i].distance==4){
-                away = Math.round(pin[i].distance);
+             if(code[i].distance==3){
+                away = Math.round(pin[i].distance*100)/100;
+                fontSize = "8";
+                fontColor = "red";  
 
             }else if(code[i]==1){
-                away = pin[i].distance;
+                away = Math.round(pin[i].distance*100)/100;
                 fontSize = "8";
                 fontColor = "green";  
               
                
             } 
             else if(code[i]==2){
-                away = pin[i].distance;
+                away = Math.round(pin[i].distance*100)/100;
                 fontSize = "8";
                 fontColor = "yellow";  
               
                 
             } else {
-                away = pin[i].distance;
-                fontSize = "8";
-                fontColor = "red";  
+                away = Math.round(pin[i].distance*100)/100;
+
             }
 
         
