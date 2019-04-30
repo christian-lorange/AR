@@ -224,7 +224,7 @@ function calculateDirection(degree){
              if(code[i]==1){
                 away = Math.round(pin[i].distance);
 
-            }else if(pcode[i]==2){
+            }else if(code[i]==2){
                 away = Math.round(pin[i].distance);
                 fontSize = "8";
                 fontColor = "#292d11";  
@@ -238,7 +238,9 @@ function calculateDirection(degree){
               
                 
             } else {
-             
+                away = pin[i].distance.toFixed(2);
+                fontSize = "18";
+                fontColor = "#292d11";  
             }
 
         
