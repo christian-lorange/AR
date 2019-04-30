@@ -48,43 +48,34 @@ var hh = {0:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:1
 
    var now = new Date();
    var l = now.getDay();
-   var today1 = new Date().getHours()
+   var today1 = new Date().getHours();
    var today2 = new Date().getMinutes()/60;
    var today = today1+today2;
 
-
-   var weekday=new Array(7);
-       weekday[0]="sunday";
-       weekday[1]="monday";
-       weekday[2]="tuesday";
-       weekday[3]="wednesday";
-       weekday[4]="thursday";
-       weekday[5]="friday";
-       weekday[6]="saturday";
 
 
 
    var code=[];             //Place holder for tracking happy hours
 
-   var elements = document.getElementsByClassName(weekday[d.getDay()]);
+
     for(i=0; i<pin.length; i++) {
             
 
             if (today >=hh[i][l][1] && today <= hh[i][l][2]-1) {                                                    //current
-            code[code.length]=1   
+            code[code.length]=1;   
               
             } else if (today >=hh[i][l][1]-1 && today <= hh[i][l][1]) {                                             //starting soon 
-            code[code.length]=2     
+            code[code.length]=2;     
               
             } else if (today >=hh[i][l][2]-1 && today <= hh[i][l][2]) {                                             //ending soon
-             code[code.length]=3   
+             code[code.length]=3;   
                
             } else {
-                code[code.length]=0   
+                code[code.length]=4;   
             }                                                                                               //not today
     }
 
-console.log(code)
+console.log(code);
 
 
 
@@ -351,24 +342,7 @@ function onAccelerometerError() {
     document.getElementById('log').innerHTML += "onError.";
 }
 
- function doSnapshot() {
-        //hide snapbtn so it will not be in snapshot image
-        document.getElementById("snapbtn").style.display = "none";
-        
-        //give dom chance to hide snapbtn before image capture
-        setTimeout( function() { 
-            ezar.snapshot(  
-                function(data) {
-                    alert("Snapshot complete.\nSee Gallery for image");
-                    document.getElementById("snapbtn").style.display = "block";
-                }, 
-                function(err) {
-                    alert("Error: " + err);
-                    document.getElementById("snapbtn").style.display = "block";
-                },
-                {"saveToPhotoAlbum":true}
-            )}, 10);
-    } 
+
     </script>
     <style>
 body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden;-webkit-user-select: none;}
