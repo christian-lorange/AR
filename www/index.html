@@ -238,13 +238,15 @@ function calculateDirection(degree){
               
                 
             } else if code[i]==3 {
-                away = pin[i].distance.toFixed(2);
+                away = pin[i].distance;
                 fontSize = "8";
                 fontColor = "red";  
             }
 
             else {
                 away = pin[i].distance.toFixed(2);
+                fontSize = "1";
+                fontColor = "grey";  
             }
 
         
