@@ -201,12 +201,15 @@ function relativePosition(i){
     distance = 3958.76  * c;
     pin[i]['distance'] = distance;
 }
+
+    var distance_threshold = 0.5;
+
 // calculate direction of points and display        
 function calculateDirection(degree){
     var detected = 0;
     $("#spot").html("");
     for(var i=0;i<pin.length;i++){
-        if(Math.abs(pin[i].bearing - degree) <= 30 && pin[i].distance <= 2){
+        if(Math.abs(pin[i].bearing - degree) <= 30 && pin[i].distance <= distance_threshold){
             var away, fontSize, fontColor,dx;
             // varry font size based on distance from gps location
              if(code[i].distance==3){
@@ -406,6 +409,27 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
             <!--<div id="actionbtn" class="navbtn"> &crarr; </div>-->
 
             <div class="navtitle">Happy Hour Live View</div> 
+
+            <select id="distance">
+  <option value="0.25">0.25 mile</option>
+  <option value="0.5" selected="selected">0.5 mile</option>
+  <option value="1">1 mile</option>
+</select>
+
+<script type="text/javascript">
+var e = document.getElementById("locations");
+e.addEventListener('change', function (){
+    var distance_threshold = this.options[this.selectedIndex].value;//www.loogle.com
+
+});
+
+</script>
+
+
+
+<div id="result"> </div>
+
+
         </div>
         <div class="listView">
             <div class="listItems"></div>
