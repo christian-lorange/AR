@@ -208,24 +208,23 @@ function relativePosition(i){
 function calculateDirection(degree){
     var detected = 0;
     $("#spot").html("");
-
-    var away, fontSize, fontColor, i, code;
-
-    for (i = 0; i < pin.length; i++){
-        if (Math.abs(pin[i].bearing - degree) <= 10) {
-            // vary font size based on distance from gps location
-             if (code[i].distance==3) {
+    for(var i=0;i<pin.length;i++){
+        if(Math.abs(pin[i].bearing - degree) <= 10){
+            var away, fontSize, fontColor;
+            // varry font size based on distance from gps location
+             if(code[i].distance==3){
                 away = Math.round(pin[i].distance*100)/100;
                 fontSize = "8";
                 fontColor = "red";  
 
-            } else if (code[i]==1) {
+            }else if(code[i]==1){
                 away = Math.round(pin[i].distance*100)/100;
                 fontSize = "8";
                 fontColor = "green";  
-                           
+              
+               
             } 
-            else if (code[i]==2) {
+            else if(code[i]==2){
                 away = Math.round(pin[i].distance*100)/100;
                 fontSize = "8";
                 fontColor = "yellow";  
