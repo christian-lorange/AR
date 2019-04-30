@@ -419,7 +419,8 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
 <script type="text/javascript">
 var e = document.getElementById("locations");
 e.addEventListener('change', function (){
-    var distance_threshold = this.options[this.selectedIndex].value;//www.loogle.com
+    var distance_threshold = this.options[this.selectedIndex].value;
+    calculateDirection(degree);
 
 });
 
