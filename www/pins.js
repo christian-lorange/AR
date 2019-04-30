@@ -12,3 +12,6 @@ var pin = [
     {"name":"Blind Pig","lat":"40.588191","lng":"-105.074905","url":"http://www.crownpub.net"},
     {"name":"Avogadro's Number","lat":"40.579534","lng":"-105.079213","url":"http://www.crownpub.net"}
 ];  
+
+
+console.log("success")
