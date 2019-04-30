@@ -221,6 +221,11 @@ function calculateDirection(degree){
         if(Math.abs(pin[i].bearing - degree) <= 10){
             var away, fontSize, fontColor;
             // varry font size based on distance from gps location
+             
+            if(code[i]==0){}
+                else {
+
+
              if(code[i].distance==0){
                 away = Math.round(pin[i].distance);
 
@@ -238,12 +243,12 @@ function calculateDirection(degree){
               
                 
             } else {
-                away = pin[i].distance.toFixed(2);
+                away = pin[i].distance;
                 fontSize = "8";
                 fontColor = "red";  
             }
 
-        
+        }
 
 
 
