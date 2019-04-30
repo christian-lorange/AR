@@ -80,7 +80,7 @@ var hh = {0:{0: {1:16,2:18},1: {1:16,2:18},2: {1:16,2:18},3: {1:16,2:18},4: {1:1
              code[code.length]=3   
                
             } else {
-                code[code.length]=0   
+                code[code.length]=4   
             }                                                                                               //not today
     }
 
@@ -222,11 +222,11 @@ function calculateDirection(degree){
             var away, fontSize, fontColor;
             // varry font size based on distance from gps location
              
-            if(code[i]==0){}
+            if(code[i]==4){console.log("check point")}
                 else {
 
 
-             if(code[i].distance==0){
+             if(code[i].distance==4){
                 away = Math.round(pin[i].distance);
 
             }else if(code[i]==1){
