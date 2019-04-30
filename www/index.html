@@ -209,7 +209,7 @@ function calculateDirection(degree){
     var detected = 0;
     $("#spot").html("");
     for(var i=0;i<pin.length;i++){
-        if(Math.abs(pin[i].bearing - degree) <= 30 && pin[i].distance <= distance_threshold){
+        if(Math.abs(pin[i].bearing - degree) <= 30 && pin[i].distance <= sel){
             var away, fontSize, fontColor,dx;
             // varry font size based on distance from gps location
              if(code[i].distance==3){
@@ -410,21 +410,29 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
 
             <div class="navtitle">Happy Hour Live View</div> 
 
-            <select id="distance_control">
-  <option value="0.25">0.25 mile</option>
-  <option value="0.5" selected="selected">0.5 mile</option>
-  <option value="1">1 mile</option>
+
+<select id = "selectX" onchange = "getSelectValue();">
+    <option value="0.25">0.25</option>
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="5">5</option>
 </select>
 
-<script type="text/javascript">
-var e = document.getElementById("distance_control");
-e.addEventListener('change', function (){
-    var distance_threshold = this.options[this.selectedIndex].value;
-    calculateDirection(degree);
-    console.log("change of value");
 
+<script type="text/javascript">
+    window.addEventListener('load', function(){
+    if (localStorage.pick) {
+        var sel = document.querySelector('#selectX');
+        sel.value = localStorage.pick;
+    }
 });
 
+function getSelectValue(){
+    var sel = document.querySelector('#selectX');
+    localStorage.pick = sel.value;
+    location.reload();
+}
 </script>
 
 
