@@ -428,12 +428,12 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
 
 <input type='number' name="server" id="saveServer"/>  
 
-<button onclick="save_data()" type="button">Save/button>
+<button onclick="saveData()" type="button">Save</button>
 
     <script>
         function saveData(){
         var input = document.getElementById("saveServer").value;
-        localStorage.setItem("distance_persistent", input;
+        localStorage.setItem("distance_persistent", input);
         }
         </script>
 
