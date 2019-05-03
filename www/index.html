@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Happy Hour Live View</title>
+    <title>HHAp Live View</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="Copyright" content="&copy; 2018, OrangeHouse LLC" />
     <meta name="Author" content="Christian L'Orange" />
@@ -353,7 +353,7 @@ function onAccelerometerError() {
 
     </script>
     <style>
-body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden;-webkit-user-select: none;}
+body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden;-webkit-user-select: none; width: 95vw; margin:auto;}
 .navbar {background-color:#222;height:40px;padding:10px;text-align:center;color:#fff;font-size:20px;font-weight:bold;line-height:40px;}
 .navtitle {text-align:center;margin:auto}
 .navbtn {background-color:#333;padding:5px 10px;height:30px;color:#fff;font-size:18px;font-weight:bold;line-height:30px;border-radius:4px;border:1px solid #666} 
@@ -425,14 +425,16 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
         <div class="listView">
             <div class="listItems"></div>
 
-<h3 style="padding-top: 20px;text-align: center;">Happy Hour Live View (Beta Verion)</h3>
-<p>Welcome to the beta testing version of the HHAp Happy Hour Live View. This agumented reality tool allows you to see happy hour deals in your location. You can use the form below (make sure to hit UPDATE!) to limit what search radius you want to include. </p>
+<h3 style="padding-top: 20px;text-align: center;">Happy Hour Live View</h3>
+<p>Welcome to The HHAp Live View. This agumented reality tool allows you to see happy hour deals in your location. You can use the form below (make sure to hit UPDATE!) to limit what search radius you want to include. You can also look for deals in your area using the map view.</p>
 
 <p>This tool works using the internal magnetometer in your phone. The magnetometer works much better if you are moving around just a bit? Not seeing any deals? Try doing a spin or two or walk around a bit.</p>
+<p>Based upon the color of the box you can see locations with current deals/specials, locations with deals about to start, and locations where deals are about to end.</p>
+<p>Hold your phone flat (horizontal to the ground) to view the instruction information and change your search radius. Tilt you phone up vertically to start the augmented reality live view.</p>
 
-<div style="width: 100vw; border-radius:10px; background-color:#008000;padding-bottom: 15px;text-align: center;font-size:3em; ">Locations with current happy hour deals</div>
-<div style="width: 100vw; border-radius:10px; background-color:#FFD700;padding-bottom: 15px;text-align: center;font-size:3em; ">Deals starting in the next hour</div>
-<div style="width: 100vw; border-radius:10px; background-color:#FF0000;padding-bottom: 15px;text-align: center;font-size:3em; ">Deals ending in less than an hour</div>
+<div style="width: 100vw; border-radius:10px; background-color:#008000;padding-bottom: 15px;text-align: center;font-size:1.5em; ">Locations with current happy hour deals</div>
+<div style="width: 100vw; border-radius:10px; background-color:#FFD700;padding-bottom: 15px;text-align: center;font-size:1.5em; ">Deals starting in the next hour</div>
+<div style="width: 100vw; border-radius:10px; background-color:#FF0000;padding-bottom: 15px;text-align: center;font-size:1.5em; ">Deals ending in less than an hour</div>
 
 <h3 style="padding-top: 20px;text-align: center;">Search Radius to Include (miles)</h3>
 <input type='text' name="server" id="saveServer" style="font-size: 3em; width: 100vw;" />  
