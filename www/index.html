@@ -42,7 +42,9 @@
     localStorage.setItem('distance_persistent', 1); 
 }
 
-
+    // Populate form
+  var input = document.getElementById("saveServer");
+  input.value = localStorage.getItem("distance_persistent");
     
 
    var d = new Date();
@@ -426,14 +428,15 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
         <div class="listView">
             <div class="listItems"></div>
 
-<input type='tel' name="server" id="saveServer"/>  
+<input type='text' name="server" id="saveServer"/>  
 
-<button onclick="saveData()" type="button">Save</button>
+<button onclick="saveData()" type="button">Update</button>
 
     <script>
         function saveData(){
         var input = document.getElementById("saveServer").value;
         localStorage.setItem("distance_persistent", input);
+        location.reload();
         }
         </script>
 

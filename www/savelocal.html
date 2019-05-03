@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+
+<input type='number' name="server" id="saveServer"/>  
+
+<button onclick="saveData()" type="button">Save</button>
+
+    <script>
+        function saveData(){
+        var input = document.getElementById("saveServer").value;
+        localStorage.setItem("distance_persistent", input);
+        }
+        </script>
+
+
+</body>
+</html>
+
+
+
