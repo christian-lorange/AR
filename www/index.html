@@ -43,6 +43,8 @@
 }
 
 
+    
+
    var d = new Date();
    var n = d.getDay();
 
@@ -205,7 +207,8 @@ function relativePosition(i){
     pin[i]['distance'] = distance;
 }
 
-    var distance_threshold = 5;
+// Set distance to trim live results at
+var distance_threshold = localStorage.getItem("distance_persistent")
 
 // calculate direction of points and display        
 function calculateDirection(degree){
