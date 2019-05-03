@@ -425,9 +425,19 @@ body {background-color:transparent;font-family:Impact;margin:0;overflow-x:hidden
         <div class="listView">
             <div class="listItems"></div>
 
-<input type='text' name="server" id="saveServer"/>  
+<h3 style="padding-top: 20px;text-align: center;">Happy Hour Live View (Beta Verion)</h3>
+<p>Welcome to the beta testing version of the HHAp Happy Hour Live View. This agumented reality tool allows you to see happy hour deals in your location. You can use the form below (make sure to hit UPDATE!) to limit what search radius you want to include. </p>
 
-<button onclick="saveData()" type="button">Update</button>
+<p>This tool works using the internal magnetometer in your phone. The magnetometer works much better if you are moving around just a bit? Not seeing any deals? Try doing a spin or two or walk around a bit.</p>
+
+<div style="width: 100vw; border-radius:10px; background-color:#008000;padding-bottom: 15px;text-align: center;font-size:3em; ">Locations with current happy hour deals</div>
+<div style="width: 100vw; border-radius:10px; background-color:#FFD700;padding-bottom: 15px;text-align: center;font-size:3em; ">Deals starting in the next hour</div>
+<div style="width: 100vw; border-radius:10px; background-color:#FF0000;padding-bottom: 15px;text-align: center;font-size:3em; ">Deals ending in less than an hour</div>
+
+<h3 style="padding-top: 20px;text-align: center;">Search Radius to Include (miles)</h3>
+<input type='text' name="server" id="saveServer" style="font-size: 3em; width: 100vw;" />  
+
+<button onclick="saveData()" type="button" style="font-size: 3em; width: 100vw;" >Update</button>
 
     <script>
         function saveData(){
