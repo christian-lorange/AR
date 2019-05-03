@@ -37,7 +37,10 @@
 //    {"name":"Avogadro's Number","lat":"40.579534","lng":"-105.079213","url":"http://www.crownpub.net"}
 //];  
 
-
+    // Check if localstorage item exists
+    if (localStorage.getItem("distance_persistent") === null) {
+    localStorage.setItem('distance_persistent', 1); 
+}
 
 
    var d = new Date();
